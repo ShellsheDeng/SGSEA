@@ -1,0 +1,24 @@
+Package: SGSEA
+Title: Survival-based Gene Set Enrichment Analysis
+Version: 1.0
+Authors@R: c(person("Xiaoxu", "Deng", email="xdeng3@kumc.edu", role = c("aut", "cre")), person("Jeffrey", "Thompson", email="jthompson21@kumc.edu", role="aut"))
+Description: Perform a gene set enrichment analysis based on the survival statistics, the log hazard ratio, by calling the functions from survival and fgsea package, and compare with pathways from Reactome database. Function for extracting human pathways from Reactome database is included.  The package also provides mean-variance model based normalization and log hazard ratio calculations. 
+License: GPL-3
+Imports: 
+    BiocManager,
+    limma,
+    reactome.db,
+    stats,
+    survival,
+    utils
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.2
+Depends: 
+    annotate,
+    org.Hs.eg.db,
+    org.Mm.eg.db,
+    BiocParallel,
+    fgsea,
+    R (>= 2.10)
+LazyData: true
