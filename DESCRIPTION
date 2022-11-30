@@ -15,10 +15,14 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.2
 Depends: 
-    annotate,
-    org.Hs.eg.db,
-    org.Mm.eg.db,
-    BiocParallel,
-    fgsea,
-    R (>= 2.10)
+  annotate,
+  org.Hs.eg.db,
+  org.Mm.eg.db,
+  BiocParallel,
+  fgsea,
+  R (>= 2.10)
 LazyData: true
+LazyDataCompression:bzip2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
