@@ -23,5 +23,5 @@ getTop10 <- function(sgsea.result,pathways,stats,plotParam){
   topPathways <- c(PosTopPathways, rev(NegTopPathways))
 
   fgsea::plotGseaTable(pathways=pathways[topPathways], stats=stats, fgseaRes=sgsea.result,
-                plotParam=plotParam)
+                       gseaParam=plotParam)
 }
