@@ -15,8 +15,8 @@ getSGSEA(pathways, logHazardRatio, minGenes, maxGenes, powerParam)
 
 \item{maxGenes}{the maximum number of genes that are included in a gene set for the test.}
 
-\item{powerParam}{This is the power, to which all input gene-level stats are raised to. If gseaParam is zero, then all gene-level stats effectively become ones and GSEA test
-becomes Kolmogorov-Smirnov test. The default value is 1, meaning that gene-level stats are used as is. Also see gseaParam in fgsea function from fgsea package.}
+\item{powerParam}{The default value is 1, meaning that gene-level stats are used as it's. If gseaParam is 0, then all gene-level stats effectively become ones
+and GSEA test becomes Kolmogorov-Smirnov test. The power of the test that all input gene-level stats are raised to. Also see gseaParam in fgsea function from fgsea package.}
 }
 \value{
 A table of GSEA results.Rows are the tested pathways and columns are
