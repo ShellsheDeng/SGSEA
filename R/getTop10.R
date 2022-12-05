@@ -12,16 +12,18 @@
 
 getTop10 <- function(sgsea.result,pathways,stats,plotParam){
 
-  Pos <- sgsea.result[sgsea.result$NES > 0]
+  sgsea.result <- data.frame(sgsea.result)
+  Pos <- sgsea.result[sgsea.result$NES > 0,]
   PosTopSig <- utils::head(order(Pos$padj), n=10)
   PosTopPathways <- Pos$pathway[PosTopSig]
 
-  Neg <- sgsea.result[sgsea.result$NES < 0]
+  Neg <- sgsea.result[sgsea.result$NES < 0,]
   NegTopSig <- utils::head(order(Neg$padj), n=10)
   NegTopPathways <- Neg$pathway[NegTopSig]
 
   topPathways <- c(PosTopPathways, rev(NegTopPathways))
 
-  fgsea::plotGseaTable(pathways=pathways[topPathways], stats=stats, fgseaRes=sgsea.result,
-                       gseaParam=plotParam)
+  return(fgsea::plotGseaTable(pathways=pathways[topPathways], stats=stats, fgseaRes=sgsea.result,
+                       gseaParam=plotParam))
+
 }
