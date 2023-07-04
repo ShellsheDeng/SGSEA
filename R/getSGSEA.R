@@ -5,7 +5,7 @@
 
 
 #' @param pathways a list of human pathways imported from Reactome database.
-#' @param logHazardRatio a named list of log hazard ratios with corresponding gene symbols. The gene symbols should be unique. The list should not contain any NA's.
+#' @param stats a named list of statistics(logHazardRatio or logFoldChange) with corresponding gene symbols. The gene symbols should be unique. The list should not contain any NA's.
 #' @param minGenes the minimal number of genes that are included in a gene set for the test.
 #' @param maxGenes the maximum number of genes that are included in a gene set for the test.
 #' @param powerParam The default value is 1, meaning that gene-level stats are used as it's. If gseaParam is 0, then all gene-level stats effectively become ones
@@ -23,10 +23,10 @@
 #' @export
 
 
-getSGSEA <- function (pathways, logHazardRatio, minGenes, maxGenes, powerParam) {
+getSGSEA <- function (pathways, stats, minGenes, maxGenes, powerParam=1) {
 
   s.fgsea.result <- fgsea::fgsea(pathways = pathways,
-                          stats    = logHazardRatio,
+                          stats    = stats,
                           minSize  = minGenes,
                           maxSize  = maxGenes,
                           gseaParam = powerParam)

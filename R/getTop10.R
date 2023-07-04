@@ -1,4 +1,4 @@
-#' get top10 head and tail significant pathways
+#' get top 10 and bottom 10 significant pathways
 #'
 #' @param sgsea.result a table from getSGSEA results.
 #' @param pathways the human pathways imported from Reactome. Same object as input in getSGSEA function.
@@ -6,7 +6,7 @@
 #' @param plotParam The parameter to adjust the displayed values. If close to 0, will get a flatten plot. The Default is 1.
 #' @import fgsea
 #' @import utils
-#' @return a table of top10 head and tail significant pathways in a ggplot object with enrichment barcode plots.
+#' @return a table of top10 and bottom10 significant pathways in a ggplot object with enrichment barcode plots.
 #' @export
 #'
 

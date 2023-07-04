@@ -23,5 +23,4 @@ getLHR <- function (normalizedData, survTime, survStatus) {
   }
     names(lhr)<- colnames(normalizedData)
     return(lhr)
-
 }
