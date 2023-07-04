@@ -2,10 +2,12 @@ Package: SGSEA
 Title: Survival-based Gene Set Enrichment Analysis
 Version: 1.1
 Authors@R: c(person("Xiaoxu", "Deng", email="xdeng3@kumc.edu", role = c("aut", "cre")), person("Jeffrey", "Thompson", email="jthompson21@kumc.edu", role="aut"))
-Description: Perform a gene set enrichment analysis based on the survival statistics, the log hazard ratio, by calling the functions from survival and fgsea package, and compare with pathways from Reactome database. Function for extracting human pathways from Reactome database is included.  The package also provides mean-variance model based normalization and log hazard ratio calculations. The package also includes a data set named KIRCRNAseq for users to play with it.  
-License: GPL-3
+Description: Perform a gene set enrichment analysis based on the survival statistics, the log hazard ratio, by calling the functions from survival and fgsea package, and compare with pathways from Reactome database. Function for extracting human pathways from Reactome database is included.  The package also provides mean-variance model based normalization and log hazard ratio calculations. The package also includes a data set named KIRCRNAseq for users to play with it. This data is obtained from the version-stamped standardized data sets hosted and maintained by the Broad institute TCGA GDAC Firehose website (http://gdac.broadinstitute.org/). 
+License: GPL-3 + file LICENSE
 Imports: 
     BiocManager,
+    DESeq2,
+    ggplot2,
     limma,
     reactome.db,
     stats,
@@ -13,7 +15,7 @@ Imports:
     utils
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3
 Depends: 
   annotate,
   org.Hs.eg.db,
@@ -22,7 +24,7 @@ Depends:
   fgsea,
   R (>= 2.10)
 LazyData: true
-LazyDataCompression:bzip2
+LazyDataCompression: bzip2
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
