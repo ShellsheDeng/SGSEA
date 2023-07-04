@@ -2,7 +2,7 @@
 % Please edit documentation in R/getTop10.R
 \name{getTop10}
 \alias{getTop10}
-\title{get top10 head and tail significant pathways}
+\title{get top 10 and bottom 10 significant pathways}
 \usage{
 getTop10(sgsea.result, pathways, stats, plotParam)
 }
@@ -16,8 +16,8 @@ getTop10(sgsea.result, pathways, stats, plotParam)
 \item{plotParam}{The parameter to adjust the displayed values. If close to 0, will get a flatten plot. The Default is 1.}
 }
 \value{
-a table of top10 head and tail significant pathways in a ggplot object with enrichment barcode plots.
+a table of top10 and bottom10 significant pathways in a ggplot object with enrichment barcode plots.
 }
 \description{
-get top10 head and tail significant pathways
+get top 10 and bottom 10 significant pathways
 }

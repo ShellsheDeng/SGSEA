@@ -6,7 +6,7 @@
 \alias{SGSEA-package}
 \title{SGSEA: Survival-based Gene Set Enrichment Analysis}
 \description{
-Perform a gene set enrichment analysis based on the survival statistics, the log hazard ratio, by calling the functions from survival and fgsea package, and compare with pathways from Reactome database. Function for extracting human pathways from Reactome database is included. The package also provides mean-variance model based normalization and log hazard ratio calculations.
+Perform a gene set enrichment analysis based on the survival statistics, the log hazard ratio, by calling the functions from survival and fgsea package, and compare with pathways from Reactome database. Function for extracting human pathways from Reactome database is included. The package also provides mean-variance model based normalization and log hazard ratio calculations. The package also includes a data set named KIRCRNAseq for users to play with it. This data is obtained from the version-stamped standardized data sets hosted and maintained by the Broad institute TCGA GDAC Firehose website (http://gdac.broadinstitute.org/).
 }
 \author{
 \strong{Maintainer}: Xiaoxu Deng \email{xdeng3@kumc.edu}

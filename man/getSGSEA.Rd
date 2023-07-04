@@ -4,12 +4,12 @@
 \alias{getSGSEA}
 \title{get survival-based gene set enrichment anaysis}
 \usage{
-getSGSEA(pathways, logHazardRatio, minGenes, maxGenes, powerParam)
+getSGSEA(pathways, stats, minGenes, maxGenes, powerParam = 1)
 }
 \arguments{
 \item{pathways}{a list of human pathways imported from Reactome database.}
 
-\item{logHazardRatio}{a named list of log hazard ratios with corresponding gene symbols. The gene symbols should be unique. The list should not contain any NA's.}
+\item{stats}{a named list of statistics(logHazardRatio or logFoldChange) with corresponding gene symbols. The gene symbols should be unique. The list should not contain any NA's.}
 
 \item{minGenes}{the minimal number of genes that are included in a gene set for the test.}
 
