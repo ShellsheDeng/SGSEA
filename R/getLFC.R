@@ -13,9 +13,14 @@
 getLFC <- function(countData,label1,label2,numRep){
 
   if(!(is.data.frame(countData))) {
-    stop(paste0(countData, 'must be a data frame'))
+    stop('must be a data frame')
   }
 
+  if(nrow(countData) != numRep*2) {
+    stop('rows must be the sample IDs and columns must be the gene symbols')
+  }
+
+  countData = as.data.frame(t(countData))
   condition <- factor(rep(c("label1","label2"),each=numRep))
   coldata<- data.frame(row.names = colnames(countData),condition)
   dds<-DESeq2::DESeqDataSetFromMatrix(countData = round(countData),
