@@ -1,4 +1,4 @@
-#' Generate a numeric vector of the log fold changes from the negative binomial generalized linear model
+#' Generate a named numeric vector of the log fold changes from the negative binomial generalized linear model
 #' @description Return a numeric vector of the log fold changes with corresponding gene symbols as their names. This function is calling DESeq function from DESeq2 package, so it takes care of the normalization procedure within the model. Users don't need to use getNorm function before this step, but still need to filter the low expressed genes.
 #' @param countData A data frame contains the raw counts. Rows must be the sample IDs and samples coming from the same experimental group should layout together (e.g. first 10 rows are label 1 and next 10 rows are label 2). Columns must be the unique gene symbols. See KIRC data included in this package as the input example format.
 #' @param label1 A group label for the samples (e.g. cancer).

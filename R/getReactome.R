@@ -1,6 +1,6 @@
-#' Gets gene sets with Hugo gene symbols to use with SGSEA analysis.
+#' Extract the pathway annotation with Hugo gene symbols from the Reactome database.
 #'
-#' @param species currently accepts 'human' or 'mouse'
+#' @param species Currently only accepts 'human' or 'mouse'
 #' @import BiocManager
 #' @import reactome.db
 #' @import annotate
@@ -8,7 +8,7 @@
 #' @import org.Hs.eg.db
 #' @importFrom stats na.omit
 #' @importFrom  utils setTxtProgressBar txtProgressBar
-#' @return A list of gene sets from Reactome database
+#' @return A large list of pathway annotation with gene symbols.
 #' @export
 #'
 

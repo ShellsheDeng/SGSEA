@@ -1,12 +1,12 @@
-#' get top 10 and bottom 10 significant pathways
+#' Generate a table of the top 10 significant pathways within positive NES as well as the top 10 significant pathways within negative NES
 #'
-#' @param sgsea.result a table from getSGSEA results.
-#' @param pathways the human pathways imported from Reactome. Same object as input in getSGSEA function.
-#' @param stats a named list of log hazard ratios. Same object as input in getSGSEA function.
+#' @param sgsea.result A data frame (e.g. an object from getSGSEA results).
+#' @param pathways A list of pathways annotation (e.g. the result object from getReactome function).
+#' @param stats A named list of statistics (e.g. the result object from getLFC or getLHR) with corresponding unique gene symbols. The list should not contain any NA's.
 #' @param plotParam The parameter to adjust the displayed values. If close to 0, will get a flatten plot. The Default is 1.
 #' @import fgsea
 #' @import utils
-#' @return a table of top10 and bottom10 significant pathways in a ggplot object with enrichment barcode plots.
+#' @return A data frame of the top 10 significant  pathways within positive NES as well as the top 10 significant pathways within negative NES in a ggplot object embedded with the enrichment barcode plots.
 #' @export
 #'
 
