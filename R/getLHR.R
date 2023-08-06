@@ -15,7 +15,7 @@ getLHR <- function (normalizedData, survTime, survStatus) {
     stop('must be a data frame')
   }
 
-  if(nrow(normalizedData) != nrow(survTime)) {
+  if(nrow(normalizedData) != length(survTime)) {
     stop('In count data, rows must be the sample IDs and columns must be the gene symbols')
   }
 
