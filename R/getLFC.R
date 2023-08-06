@@ -1,5 +1,5 @@
 #' Generate log fold change from the negative binomial generalized linear model
-#' @description Return a list of log fold changes with corresponding gene symbols as their names. This function is calling DESeq function from DESeq2 package.
+#' @description Return a list of log fold changes with corresponding gene symbols as their names. This function is calling DESeq function from DESeq2 package, so it takes care of the normalization within the model.
 #' @param countData a data frame contains only counts. Rows should be sample IDs and columns are the gene symbols and should be unique. Data should be filtered before entering this step.
 #' @param label1 group label for the samples.
 #' @param label2 group label for the samples.
