@@ -1,11 +1,11 @@
-#' Enrichment plot for an individual pathway
+#' Create an individual enrichment plot for a specific pathway
 #'
-#' @param pathways the human pathways imported from Reactome. Same object as input in getSGSEA function.
-#' @param pathwayName enter the whole name of a specific pathway from your result table with the quotation mark.
-#' @param stats log hazard ratios or log fold changes.
+#' @param pathways A list of human pathways imported from the Reactome database. Same object as the argument in getSGSEA function.
+#' @param pathwayName Enter the whole name of a specific pathway from getSGSEA result table with the quotation mark.
+#' @param stats Log hazard ratios or log fold changes.
 #' @import fgsea
 #' @import ggplot2
-#' @return the enrichment plot for an individual pathway
+#' @return An enrichment plot for a specific pathway
 #' @export
 #'
 
