@@ -1,11 +1,11 @@
-#' get normalized data
-#' @description This function uses mean-variance method to get the normalized values for a count data. It's calling voom function from limma package.
-#' @param countsData a data frame contains all numeric counts. Columns should be the gene symbols and rows should be sample IDs.
+#' Normalized the raw counts data
+#' @description This function uses mean-variance method to get a normalized count data. It's calling voom function from the limma package. Data should be filtered before entering this step.
+#' @param countsData A data frame contains all numeric counts. Rows must be the sample IDs. Columns must be the unique gene symbols. See KIRC data included in this package as the input example format.
 #' @import limma
-#' @return return the same data frame format with normalized counts
+#' @return Return a data frame with normalized counts.
 #' @export
 
-getNORM <- function (countsData) {
+getNorm <- function (countsData) {
 
   if(!(is.data.frame(countsData))) {
     stop(paste0(countsData, 'must be a data frame'))
