@@ -3,7 +3,7 @@
 export(getEnrichPlot)
 export(getLFC)
 export(getLHR)
-export(getNORM)
+export(getNorm)
 export(getReactome)
 export(getSGSEA)
 export(getTop10)

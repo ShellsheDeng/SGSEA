@@ -2,16 +2,16 @@
 % Please edit documentation in R/getReactome.R
 \name{getReactome}
 \alias{getReactome}
-\title{Gets gene sets with Hugo gene symbols to use with SGSEA analysis.}
+\title{Extract the pathway annotation with Hugo gene symbols from the Reactome database.}
 \usage{
 getReactome(species = "human")
 }
 \arguments{
-\item{species}{currently accepts 'human' or 'mouse'}
+\item{species}{Currently only accepts 'human' or 'mouse'}
 }
 \value{
-A list of gene sets from Reactome database
+A large list of pathway annotation with gene symbols.
 }
 \description{
-Gets gene sets with Hugo gene symbols to use with SGSEA analysis.
+Extract the pathway annotation with Hugo gene symbols from the Reactome database.
 }

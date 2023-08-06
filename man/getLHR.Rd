@@ -2,22 +2,20 @@
 % Please edit documentation in R/getLHR.R
 \name{getLHR}
 \alias{getLHR}
-\title{Generate log hazard ratios from Cox Proportional Hazards Model}
+\title{Generate a named numeric vector of the log hazard ratios from Cox Proportional Hazards Model}
 \usage{
 getLHR(normalizedData, survTime, survStatus)
 }
 \arguments{
-\item{normalizedData}{a data frame contains normalized counts. Columns should be the gene symbols and rows should be sample IDs.
-Data should also be filtered before entering this step.}
+\item{normalizedData}{A data frame contains the normalized counts. Rows must be the sample IDs. Columns must be the unique gene symbols. See KIRC data included in this package as the input example format.}
 
-\item{survTime}{a numeric vector of survival times. User should be aware of keeping the same order of gene symbols for survival times and the genes in normalizedData.}
+\item{survTime}{A numeric vector of patient's survival times. User should be aware of matching the gene symbols from the normalized count data with each individual's survival times.}
 
-\item{survStatus}{a numeric vector indicating events. Normally 0=alive, 1=dead. Or 1=alive, 2=death. If omitted, all subjects are assumed to have an event.
-User should be aware of keeping the same order of gene symbols for survival status and the genes in normalizedData.}
+\item{survStatus}{A numeric vector of patient's survival status. Normally 0=alive, 1=dead. Or 1=alive, 2=death. If omitted, all subjects are assumed to have an event. User should be aware of matching the gene symbols from the normalized count data with each individual's survival status.}
 }
 \value{
-a named list of log hazard ratios with corresponding gene symbols.
+A named list of the log hazard ratios with their corresponding gene symbols.
 }
 \description{
-Return a list of log hazard ratios with corresponding gene symbols as their names. This function is calling coxph function from survival package.
+Return a numeric vector of log hazard ratios with corresponding gene symbols as their names. This function is calling coxph function from the survival package. Data should be filtered and normalized before entering this step.
 }

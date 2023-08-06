@@ -2,22 +2,24 @@
 % Please edit documentation in R/getLFC.R
 \name{getLFC}
 \alias{getLFC}
-\title{Generate log fold change from the negative binomial generalized linear model}
+\title{Generate a named numeric vector of the log fold changes from the negative binomial generalized linear model}
 \usage{
-getLFC(countData, label1, label2, numRep)
+getLFC(countData, label1, label2, label1_numRep, label2_numRep)
 }
 \arguments{
-\item{countData}{a data frame contains only counts. Rows should be sample IDs and columns are the gene symbols and should be unique. Data should be filtered before entering this step.}
+\item{countData}{A data frame contains the raw counts. Rows must be the sample IDs and samples coming from the same experimental group should layout together (e.g. first 10 rows are label 1 and next 10 rows are label 2). Columns must be the unique gene symbols. See KIRC data included in this package as the input example format.}
 
-\item{label1}{group label for the samples.}
+\item{label1}{A group label for the samples (e.g. cancer).}
 
-\item{label2}{group label for the samples.}
+\item{label2}{A group label for the samples (e.g. normal).}
 
-\item{numRep}{Number of replications for each condition.}
+\item{label1_numRep}{Number of replications for label 1 group (e.g. first 10 rows are from label 1, then input 10).}
+
+\item{label2_numRep}{Number of replications for label 2 group (e.g. next 20 rows are from label 2, then input 20).}
 }
 \value{
-a named list of log fold changes with corresponding gene symbols.
+A named list of the log fold changes with their corresponding gene symbols.
 }
 \description{
-Return a list of log fold changes with corresponding gene symbols as their names. This function is calling DESeq function from DESeq2 package, so it takes care of the normalization within the model.
+Return a numeric vector of the log fold changes with corresponding gene symbols as their names. This function is calling DESeq function from DESeq2 package, so it takes care of the normalization procedure within the model. Users don't need to use getNorm function before this step, but still need to filter the low expressed genes.
 }

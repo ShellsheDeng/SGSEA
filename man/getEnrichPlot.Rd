@@ -2,20 +2,20 @@
 % Please edit documentation in R/getEnrichPlot.R
 \name{getEnrichPlot}
 \alias{getEnrichPlot}
-\title{Enrichment plot for an individual pathway}
+\title{Create an individual enrichment plot for a specific pathway}
 \usage{
 getEnrichPlot(pathways, pathwayName, stats)
 }
 \arguments{
-\item{pathways}{the human pathways imported from Reactome. Same object as input in getSGSEA function.}
+\item{pathways}{A list of human pathways imported from the Reactome database. Same object as the argument in getSGSEA function.}
 
-\item{pathwayName}{enter the whole name of a specific pathway from your result table with the quotation mark.}
+\item{pathwayName}{Enter the whole name of a specific pathway from getSGSEA result table with the quotation mark.}
 
-\item{stats}{log hazard ratios or log fold changes.}
+\item{stats}{Log hazard ratios or log fold changes.}
 }
 \value{
-the enrichment plot for an individual pathway
+An enrichment plot for a specific pathway
 }
 \description{
-Enrichment plot for an individual pathway
+Create an individual enrichment plot for a specific pathway
 }
