@@ -17,5 +17,5 @@ getEnrichPlot(pathways, pathwayName, stats)
 An enrichment plot for a specific pathway
 }
 \description{
-Create an individual enrichment plot for a specific pathway
+This function is used to visuliaze the results for specific pathways of interest from SGSEA and it calls the fgsea package to produce the plot.
 }
