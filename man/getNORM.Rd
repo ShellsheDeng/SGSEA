@@ -13,5 +13,5 @@ getNorm(countsData)
 Return a data frame with normalized counts.
 }
 \description{
-This function uses mean-variance method to get a normalized count data. It's calling voom function from the limma package. Data should be filtered before entering this step.
+This function uses mean-variance method to get a normalized count data. It's using the voom function from limma package. Data should be filtered before entering this step.
 }

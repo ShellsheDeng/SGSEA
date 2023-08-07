@@ -17,5 +17,5 @@ getLHR(normalizedData, survTime, survStatus)
 A named list of the log hazard ratios with their corresponding gene symbols.
 }
 \description{
-Return a numeric vector of log hazard ratios with corresponding gene symbols as their names. This function is calling coxph function from the survival package. Data should be filtered and normalized before entering this step.
+Return a numeric vector of log hazard ratios with corresponding gene symbols as their names. This function uses the coxph function from survival package. Data should be filtered and normalized before entering this step.
 }

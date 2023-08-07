@@ -21,5 +21,5 @@ getLFC(countData, label1, label2, label1_numRep, label2_numRep)
 A named list of the log fold changes with their corresponding gene symbols.
 }
 \description{
-Return a numeric vector of the log fold changes with corresponding gene symbols as their names. This function is calling DESeq function from DESeq2 package, so it takes care of the normalization procedure within the model. Users don't need to use getNorm function before this step, but still need to filter the low expressed genes.
+Return a numeric vector of the log fold changes with corresponding gene symbols as their names. This function uses functions from the DESeq2 package, so it takes care of the normalization procedure within the model. Users don't need to use getNorm function before this step, but still need to filter the low expressed genes.
 }

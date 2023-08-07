@@ -22,7 +22,7 @@ A data frame with 520 rows (patient ID) and 3000 variables (gene symbols):
 KIRC
 }
 \description{
-A subset of Kidney Renal Clear Cell Carcinoma mRNA seq data (version 2016_01_28) from Broad Institute The Cancer Genome Atlas (TCGA) Genome Data Analysis Center (GDAC) Firehose website (http://gdac.broadinstitute.org).
+An example of the data structure, which is a subset of Kidney Renal Clear Cell Carcinoma mRNA seq data (version 2016_01_28) from Broad Institute The Cancer Genome Atlas (TCGA) Genome Data Analysis Center (GDAC) Firehose website (http://gdac.broadinstitute.org).
 }
 \examples{
 data(KIRC)  # lazy loading.
