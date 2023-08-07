@@ -1,4 +1,4 @@
-#' Extract the pathway annotation with Hugo gene symbols from the Reactome database.
+#' Extract the gene annotation with Hugo gene symbols from the Reactome database.
 #'
 #' @param species Currently only accepts 'human' or 'mouse'
 #' @import BiocManager

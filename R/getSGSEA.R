@@ -1,5 +1,5 @@
 #' Perform the Survival-based Gene Set Enrichment Analysis
-#' @description Perform a gene set enrichment analysis based on the survival statistics, log hazard ratios. This function is calling the fgsea function from the fgsea package.
+#' @description This function can perform the Survival-based Gene Set Enrichment Analysis (SGSEA) based on the survival statistics, log hazard ratios, and the typical case vs. control (or normal vs. tumor) GSEA. This function is calling the fgsea function from the fgsea package.
 #' @param pathways A list of pathways annotation (e.g. the result object from getReactome function).
 #' @param stats A named list of statistics (e.g. the result object from getLFC or getLHR) with corresponding unique gene symbols. The list should not contain any NA's.
 #' @param minGenes The minimal number of genes that are included in a gene set for the test.
