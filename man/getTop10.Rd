@@ -2,7 +2,7 @@
 % Please edit documentation in R/getTop10.R
 \name{getTop10}
 \alias{getTop10}
-\title{Generate a table of the top 10 significant pathways within positive NES as well as the top 10 significant pathways within negative NES}
+\title{Generate a table of the top 10 significant pathways with positive NES as well as the top 10 significant pathways with negative NES}
 \usage{
 getTop10(sgsea.result, pathways, stats, plotParam)
 }
@@ -16,8 +16,8 @@ getTop10(sgsea.result, pathways, stats, plotParam)
 \item{plotParam}{The parameter to adjust the displayed values. If close to 0, will get a flatten plot. The Default is 1.}
 }
 \value{
-A data frame of the top 10 significant  pathways within positive NES as well as the top 10 significant pathways within negative NES in a ggplot object embedded with the enrichment barcode plots.
+A data frame of the top 10 significant pathways with positive NES as well as the top 10 significant pathways with negative NES in a ggplot object embedded with the enrichment barcode plots.
 }
 \description{
-Generate a table of the top 10 significant pathways within positive NES as well as the top 10 significant pathways within negative NES
+Generate a table of the top 10 significant pathways with positive NES as well as the top 10 significant pathways with negative NES
 }

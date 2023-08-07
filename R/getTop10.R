@@ -1,4 +1,4 @@
-#' Generate a table of the top 10 significant pathways within positive NES as well as the top 10 significant pathways within negative NES
+#' Generate a table of the top 10 significant pathways with positive NES as well as the top 10 significant pathways with negative NES
 #'
 #' @param sgsea.result A data frame (e.g. an object from getSGSEA results).
 #' @param pathways A list of pathways annotation (e.g. the result object from getReactome function).
@@ -6,7 +6,7 @@
 #' @param plotParam The parameter to adjust the displayed values. If close to 0, will get a flatten plot. The Default is 1.
 #' @import fgsea
 #' @import utils
-#' @return A data frame of the top 10 significant  pathways within positive NES as well as the top 10 significant pathways within negative NES in a ggplot object embedded with the enrichment barcode plots.
+#' @return A data frame of the top 10 significant pathways with positive NES as well as the top 10 significant pathways with negative NES in a ggplot object embedded with the enrichment barcode plots.
 #' @export
 #'
 
