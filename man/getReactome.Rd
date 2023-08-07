@@ -2,7 +2,7 @@
 % Please edit documentation in R/getReactome.R
 \name{getReactome}
 \alias{getReactome}
-\title{Extract the pathway annotation with Hugo gene symbols from the Reactome database.}
+\title{Extract the gene annotation with Hugo gene symbols from the Reactome database.}
 \usage{
 getReactome(species = "human")
 }
@@ -13,5 +13,5 @@ getReactome(species = "human")
 A large list of pathway annotation with gene symbols.
 }
 \description{
-Extract the pathway annotation with Hugo gene symbols from the Reactome database.
+Extract the gene annotation with Hugo gene symbols from the Reactome database.
 }

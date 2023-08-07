@@ -23,5 +23,5 @@ A table of pathway enrichment analysis results. Rows are the tested pathways and
 normalized enrichment scores, sample size for each pathway, and leading edge genes. See value in the fgsea function from fgsea package for more details.
 }
 \description{
-Perform a gene set enrichment analysis based on the survival statistics, log hazard ratios. This function is calling the fgsea function from the fgsea package.
+This function can perform the Survival-based Gene Set Enrichment Analysis (SGSEA) based on the survival statistics, log hazard ratios, and the typical case vs. control (or normal vs. tumor) GSEA. This function is calling the fgsea function from the fgsea package.
 }
