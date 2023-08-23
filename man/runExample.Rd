@@ -7,5 +7,5 @@
 runExample()
 }
 \description{
-Launch to a corresponding SGSEA Shiny app
+Need to call the package name first to avoid conflict functions from other packages (e.g. SGSEA::runExample())
 }
