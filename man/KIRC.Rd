@@ -5,14 +5,18 @@
 \alias{KIRC}
 \title{Kidney Renal clear cell carcinoma(KIRC)}
 \format{
-A data frame with 520 rows (patient ID) and 3000 variables (gene symbols):
+A data frame with 50 observations and 10 variables:
 \describe{
 \item{ID}{patient's ID}
 \item{survtime}{patient's survival time in days}
 \item{status}{1 for alive, 2 for dead}
-\item{barcode}{patient's barcode}
 \item{A1BG}{gene symbol}
-...
+\item{A1CF}{gene symbol}
+\item{A2BP1}{gene symbol}
+\item{A2LD1}{gene symbol}
+\item{A2ML1}{gene symbol}
+\item{A2M}{gene symbol}
+\item{A4GALT}{gene symbol}
 }
 }
 \source{

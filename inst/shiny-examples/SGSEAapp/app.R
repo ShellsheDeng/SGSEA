@@ -192,7 +192,7 @@ server <- function(input, output) {
     else{genes_normed <- filtering_reac() }
     return(genes_normed)
   })
-  # if needs filtering, show data
+  # if needs normalization, show data
   output$output_normalization1 <- DT::renderDataTable({
     if(is.null(input$normalization)) {return()}
     else if(input$normalization==1){
@@ -200,7 +200,7 @@ server <- function(input, output) {
       DT::datatable(round_norm[1:100,1:10],
                     options = list(lengthMenu = c(5, 30), pageLength = 8, digit=3))}
   })
-  # if dont need filtering, show guidance text
+  # if dont need normalization, show guidance text
   output$output_normalization2 <- renderText({
     if(is.null(input$normalization)) {return()}
     else if(input$normalization==2){"Please click 'GO!' on bottom left panel"}
@@ -252,11 +252,13 @@ server <- function(input, output) {
     w$show()
     on.exit(w$hide())
     Sys.sleep(sample(5,1)) #allows R to temporarily be given very low priority and not to interfere with more important foreground tasks
-     require("org.Hs.eg.db")
-     reactome_data<-SGSEA::getReactome(species = "human")
-     return(reactome_data)
-    #Dir <- system.file("shiny-examples", "SGSEAapp","spathways.rds", package = "SGSEA")
-    #reactome_data<-readRDS(file = Dir)
+     #require("org.Hs.eg.db")
+     #reactome_data<-SGSEA::getReactome(species = "human")
+     #return(reactome_data)
+    Dir <- system.file("extdata","spathways.rds", package = "SGSEA")
+    reactome_data<-readRDS(file = Dir)
+    return(reactome_data)
+
   })
 
 
