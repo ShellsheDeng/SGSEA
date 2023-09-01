@@ -42,7 +42,7 @@ ui <- fluidPage(
       # step 2 upload survival file
       fileInput(inputId = "upload_file_surv",label=h5("Step 2: Input your survival file")),
       helpText("Note: The 1st column must be ID, 2nd column must be time, and 3rd column must be
-                   survival status, where the last two columns must be numeric. All column must have column names.Please click on the right panel Survival Data to see if your file uploads correctly or go to next step"),
+                   survival status, where the last two columns must be numeric. All columns must have column names.Please click on the right panel Survival Data to see if your file uploads correctly or go to next step"),
       radioButtons(inputId = "data_type_surv", label = h5("select file type you are uploading"),
                    choices = c(".csv",".txt",".xlsx"),selected = character(0)),
       # step 3 filtering
