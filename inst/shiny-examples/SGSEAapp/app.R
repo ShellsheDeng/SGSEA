@@ -35,25 +35,25 @@ ui <- fluidPage(
     sidebarPanel(
       # step 1 upload gene file
       fileInput(inputId = "upload_file_gene",label=h5("Step 1: Input your gene expression file")),
-      helpText("Note: The 1st column must be ID and other columns must be numeric with gene symbols
-                   as their column names."),
+      helpText("Note: The 1st column must be ID and other columns must be gene expressions in numeric with gene symbols
+                   as their column names. Please click on the right panel Gene Data to see if your file uploads correctly or go to next step"),
       radioButtons(inputId = "data_type_gene", label = h5("select file type you are uploading"),
                    choices = c(".csv",".txt",".xlsx"),selected = ".csv"),
       # step 2 upload survival file
       fileInput(inputId = "upload_file_surv",label=h5("Step 2: Input your survival file")),
       helpText("Note: The 1st column must be ID, 2nd column must be time, and 3rd column must be
-                   survival status and last two columns must be numeric. All column must have column names."),
+                   survival status, where the last two columns must be numeric. All column must have column names.Please click on the right panel Survival Data to see if your file uploads correctly or go to next step"),
       radioButtons(inputId = "data_type_surv", label = h5("select file type you are uploading"),
                    choices = c(".csv",".txt",".xlsx"),selected = character(0)),
       # step 3 filtering
-      radioButtons(inputId = "filtering", label = h5("Step 3: Do you need to filter the data?"),
+      radioButtons(inputId = "filtering", label = h5("Step 3: Do you need to filter the data? If yes, please click on the right panel Filtering to see if your file filters correctly. Otherwise go to next step"),
                    choices = c("Yes"=1,"No"=2),selected = character(0)),
       # step 4 normalization
-      radioButtons(inputId = "normalization", label = h5("Step 4: Do you need to normalize the data?"),
+      radioButtons(inputId = "normalization", label = h5("Step 4: Do you need to normalize the data? If yes, please click on the right panel Normalization to see if your file normalizes correctly. Otherwise go to next step"),
                    choices = c("Yes"=1,"No"=2),selected=character(0)),
       #
       waiter::use_waiter(),
-      actionButton(inputId = "gobutton",label="Go!"),h5("Please go the 'Results Panel' on top right")
+      actionButton(inputId = "gobutton",label="Go!"),h5("Please go to SGSEA Results on the right panel")
     ),
 
     # main panel for output display
