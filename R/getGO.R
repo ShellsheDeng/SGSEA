@@ -17,17 +17,18 @@
 #'
 getGO <- function(species = 'human') {
 
+   db <- ''
   # Load correct annotation database
   if (species == 'human') {
     if (!requireNamespace("org.Hs.eg.db", quietly = TRUE)) {
       stop("Package 'org.Hs.eg.db' is required but not installed. Install it using BiocManager::install('org.Hs.eg.db').")
     }
-    db <- org.Hs.eg.db
+    db <- "org.Hs.eg.db"
   } else if (species == 'mouse') {
     if (!requireNamespace("org.Mm.eg.db", quietly = TRUE)) {
       stop("Package 'org.Mm.eg.db' is required but not installed. Install it using BiocManager::install('org.Mm.eg.db').")
     }
-    db <- org.Mm.eg.db
+    db <- "org.Mm.eg.db"
   } else {
     stop(paste0('Species ', species, ' not supported.'))
   }
@@ -39,10 +40,10 @@ getGO <- function(species = 'human') {
 
   # Retrieve GO terms mapped to gene IDs using AnnotationDbi::select
   go_mapping <- AnnotationDbi::select(
-    db,
-    keys = keys(db, keytype = "GO"),
+    get(db),
+    keys = keys(get(db), keytype = "ENTREZID"),
     columns = c("SYMBOL", "GO"),
-    keytype = "GO"
+    keytype = "ENTREZID"
   )
 
   # Remove NA values and ensure proper mapping
