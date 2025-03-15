@@ -42,34 +42,37 @@ ui <- fluidPage(
       helpText("Click the button to download an R script that demonstrates how to use the SGSEA package."),
 
       # step 1 upload gene file
-      fileInput(inputId = "upload_file_gene",label=h5("Step 1: Input your gene expression file")),
-      helpText("Note: The 1st column must be ID and other columns must be gene expressions in numeric with gene symbols
-                   as their column names. Please click on the right panel Gene Data to see if your file uploads correctly or go to next step"),
-      radioButtons(inputId = "data_type_gene", label = h5("select file type you are uploading"),
+      fileInput(inputId = "upload_file_gene",label=h5("Step 1: Upload Gene Expression File")),
+      helpText("The first column must be 'ID', and all other columns should contain numeric gene expression values with gene symbols as column names.
+               Click 'Gene Data' (top-right panel) to verify the upload before proceeding."),
+      radioButtons(inputId = "data_type_gene", label = h5("Select File Type"),
                    choices = c(".csv",".txt",".xlsx"),selected = ".csv"),
 
 
       # step 2 upload survival file
-      fileInput(inputId = "upload_file_surv",label=h5("Step 2: Input your survival file")),
-      helpText("Note: The 1st column must be ID, 2nd column must be time, and 3rd column must be
-                   survival status, where the last two columns must be numeric. All columns must have column names.Please click on the right panel Survival Data to see if your file uploads correctly or go to next step"),
-      radioButtons(inputId = "data_type_surv", label = h5("select file type you are uploading"),
+      fileInput(inputId = "upload_file_surv",label=h5("Step 2: Upload Survival Data File")),
+      helpText("The first column must be 'ID', the second column 'Survival Time', and the third column 'Survival Status' (numeric).
+          Ensure all columns have names. Click 'Survival Data' (top right panel) to verify the upload before proceeding."),
+      radioButtons(inputId = "data_type_surv", label = h5("Select File Type"),
                    choices = c(".csv",".txt",".xlsx"),selected = character(0)),
 
 
       # step 3 filtering
-      radioButtons(inputId = "filtering", label = h5("Step 3: Do you need to filter the data? If yes, please click on the right panel Filtering to see if your file filters correctly. Otherwise go to next step"),
+      radioButtons(inputId = "filtering", label = h5("Step 3: Apply Data Filtering?"),
                    choices = c("Yes"=1,"No"=2),selected = character(0)),
-      # step 4 normalization
-      radioButtons(inputId = "normalization", label = h5("Step 4: Do you need to normalize the data? If yes, please click on the right panel Normalization to see if your file normalizes correctly. Otherwise go to next step"),
-                   choices = c("Yes"=1,"No"=2),selected=character(0)),
+      helpText("Click 'Filtering' (top right panel) to verify filtered data. Otherwise, proceed to the next step."),
+
+      # Step 4: Data Normalization
+      radioButtons(inputId = "normalization", label = h5("Step 4: Apply Data Normalization?"),
+                   choices = c("Yes" = 1, "No" = 2), selected = character(0)),
+      helpText("Click 'Normalization' (top right panel) to verify normalized data. Otherwise, proceed to the next step."),
 
 
 
       # Action button to start analysis
       waiter::use_waiter(),
       actionButton(inputId = "gobutton",label="Go!"),
-      h5("Please go to SGSEA Results on the right panel")
+      h5("View results in 'SGSEA Results' (top right panel).")
     ),
 
 
@@ -83,7 +86,7 @@ ui <- fluidPage(
                           tabPanel("Filtering",DT::dataTableOutput("output_filtering1"),textOutput("output_filtering2")),
                           tabPanel("Normalization",DT::dataTableOutput("output_normalization1"),textOutput("output_normalization2")),
                           tabPanel("SGSEA Results",DT::dataTableOutput("output_file_sgsea")),
-                          tabPanel("Top10 SGSEA Pathways",plotOutput("output_sgsea_top10",width = "80%"))
+                          tabPanel("Top10 Significant Pathways",plotOutput("output_sgsea_top10",width = "80%"))
 
   )
   )
