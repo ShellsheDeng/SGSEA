@@ -8,6 +8,8 @@ To access the example script that demonstrates the full SGSEA workflow, run the 
 script_path <- system.file("scripts", "SGSEA_example_script.R", package = "SGSEA")
 file.copy(script_path, "SGSEA_example_script.R")
 file.edit("SGSEA_example_script.R")  # Open it in RStudio
+```
+
 
 Download this package from GitHub: 
 1. install BiocManager and devtools
