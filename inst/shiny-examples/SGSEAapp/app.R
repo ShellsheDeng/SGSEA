@@ -33,6 +33,14 @@ ui <- fluidPage(
 
     # Sidebar for guiding steps
     sidebarPanel(
+      # NEW: Download Example Dataset Button
+      downloadButton("download_example_data", "Download Example Dataset (KIRC)"),
+      helpText("Click the button to download an example dataset (KIRC) to understand the expected input format."),
+
+      # NEW: Download Example R Script Button
+      downloadButton("download_example_script", "Download Example Script"),
+      helpText("Click the button to download an R script that demonstrates how to use the SGSEA package."),
+
       # step 1 upload gene file
       fileInput(inputId = "upload_file_gene",label=h5("Step 1: Input your gene expression file")),
       helpText("Note: The 1st column must be ID and other columns must be gene expressions in numeric with gene symbols
@@ -49,22 +57,24 @@ ui <- fluidPage(
                    choices = c(".csv",".txt",".xlsx"),selected = character(0)),
 
 
-      # Download Example Data Button
-      h5("Download Example Data and Script:"),
-      downloadButton("downloadData", "Download Example Data"),
-      helpText("Click to download an example dataset for SGSEA."),
-
-
       # step 3 filtering
       radioButtons(inputId = "filtering", label = h5("Step 3: Do you need to filter the data? If yes, please click on the right panel Filtering to see if your file filters correctly. Otherwise go to next step"),
                    choices = c("Yes"=1,"No"=2),selected = character(0)),
       # step 4 normalization
       radioButtons(inputId = "normalization", label = h5("Step 4: Do you need to normalize the data? If yes, please click on the right panel Normalization to see if your file normalizes correctly. Otherwise go to next step"),
                    choices = c("Yes"=1,"No"=2),selected=character(0)),
-      #
+
+
+
+      # Action button to start analysis
       waiter::use_waiter(),
-      actionButton(inputId = "gobutton",label="Go!"),h5("Please go to SGSEA Results on the right panel")
+      actionButton(inputId = "gobutton",label="Go!"),
+      h5("Please go to SGSEA Results on the right panel")
     ),
+
+
+
+
 
     # main panel for output display
     mainPanel(tabsetPanel(type = "tabs",
@@ -73,9 +83,12 @@ ui <- fluidPage(
                           tabPanel("Filtering",DT::dataTableOutput("output_filtering1"),textOutput("output_filtering2")),
                           tabPanel("Normalization",DT::dataTableOutput("output_normalization1"),textOutput("output_normalization2")),
                           tabPanel("SGSEA Results",DT::dataTableOutput("output_file_sgsea")),
-                          tabPanel("Top10 SGSEA Pathways",plotOutput("output_sgsea_top10",width = "80%")),
+                          tabPanel("Top10 SGSEA Pathways",plotOutput("output_sgsea_top10",width = "80%"))
 
-  ))))
+  )
+  )
+  )
+)
 
 
 
@@ -92,6 +105,27 @@ server <- function(input, output) {
 
   options(shiny.maxRequestSize=100*1024^2)
 
+  # NEW: Function to Download Example Dataset (KIRC)
+  output$download_example_data <- downloadHandler(
+    filename = function() {
+      "KIRC_example.csv"
+    },
+    content = function(file) {
+      data("KIRC", package = "SGSEA")
+      write.csv(KIRC, file, row.names = FALSE)
+    }
+  )
+
+
+  output$download_example_script <- downloadHandler(
+    filename = function() {
+      "SGSEA_example_script.R"
+    },
+    content = function(file) {
+      script_path <- system.file("scripts", "SGSEA_example_script.R", package = "SGSEA")
+      file.copy(script_path, file)
+    }
+  )
 
 
 

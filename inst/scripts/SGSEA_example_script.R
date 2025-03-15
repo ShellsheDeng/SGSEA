@@ -18,14 +18,12 @@ gene_expr <- KIRC[, 4:ncol(KIRC)]    # Columns 4+ are gene expression
 normalized_gene_expr <- getNorm(gene_expr, plot = FALSE)
 
 # Step 4: Compute Log Hazard Ratio (LHR)
-# survival data is in columns 2 (time) and 3 (status)
-
 # Ensure `survTime` and `survStatus` are Valid
 cat("Checking survival variables:\n")
 print(summary(survTime))  # Ensure times are valid
 print(table(survStatus, useNA = "always"))  # Ensure status contains only 0 or 1
 
-# Convert `survStatus` from (1 = alive, 2 = dead) → (0 = alive, 1 = dead)
+# Convert `survStatus` from (1 = alive, 2 = dead) to (0 = alive, 1 = dead)
 survStatus[survStatus == 1] <- 0
 survStatus[survStatus == 2] <- 1
 
@@ -39,8 +37,9 @@ normalized_gene_expr <- normalized_gene_expr[valid_status, ]  # Keep only valid 
 lhr_results <- getLHR(normalizedData = normalized_gene_expr,
                       survTime = survTime,
                       survStatus = survStatus)
+
 # Option for getting the log fold change from the Differential expression analysis
-#lfc_results < getLFC(countData, cancer, normal, 70)
+# lfc_results < getLFC(countData, cancer, normal, 70)
 
 # Step 5: Retrieve Pathways
 # Option 1: Get Reactome Pathways (for general pathway analysis)
