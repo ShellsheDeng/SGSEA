@@ -2,7 +2,6 @@
 % Please edit documentation in R/SGSEA-package.R
 \docType{package}
 \name{SGSEA-package}
-\alias{SGSEA}
 \alias{SGSEA-package}
 \title{SGSEA: Survival-based Gene Set Enrichment Analysis}
 \description{
