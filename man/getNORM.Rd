@@ -10,6 +10,8 @@ getNorm(countsData, plot = FALSE)
 \item{countsData}{A data frame contains all numeric counts.
 Rows must be the sample IDs. Columns must be the unique gene symbols.
 See the included 'KIRC' dataset for an example.}
+
+\item{plot}{Logical. If \code{TRUE}, a mean-variance plot will be generated. Default is \code{FALSE}.}
 }
 \value{
 a data frame with normalized counts.

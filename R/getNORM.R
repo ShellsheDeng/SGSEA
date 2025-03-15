@@ -6,7 +6,8 @@
 #' @param countsData A data frame contains all numeric counts.
 #' Rows must be the sample IDs. Columns must be the unique gene symbols.
 #' See the included 'KIRC' dataset for an example.
-#'
+#'@param plot Logical. If `TRUE`, a mean-variance plot will be generated. Default is `FALSE`.
+
 #' @import limma
 #' @return a data frame with normalized counts.
 #' @export
