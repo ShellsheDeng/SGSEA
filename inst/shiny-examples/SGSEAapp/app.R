@@ -39,12 +39,22 @@ ui <- fluidPage(
                    as their column names. Please click on the right panel Gene Data to see if your file uploads correctly or go to next step"),
       radioButtons(inputId = "data_type_gene", label = h5("select file type you are uploading"),
                    choices = c(".csv",".txt",".xlsx"),selected = ".csv"),
+
+
       # step 2 upload survival file
       fileInput(inputId = "upload_file_surv",label=h5("Step 2: Input your survival file")),
       helpText("Note: The 1st column must be ID, 2nd column must be time, and 3rd column must be
                    survival status, where the last two columns must be numeric. All columns must have column names.Please click on the right panel Survival Data to see if your file uploads correctly or go to next step"),
       radioButtons(inputId = "data_type_surv", label = h5("select file type you are uploading"),
                    choices = c(".csv",".txt",".xlsx"),selected = character(0)),
+
+
+      # Download Example Data Button
+      h5("Download Example Data and Script:"),
+      downloadButton("downloadData", "Download Example Data"),
+      helpText("Click to download an example dataset for SGSEA."),
+
+
       # step 3 filtering
       radioButtons(inputId = "filtering", label = h5("Step 3: Do you need to filter the data? If yes, please click on the right panel Filtering to see if your file filters correctly. Otherwise go to next step"),
                    choices = c("Yes"=1,"No"=2),selected = character(0)),
@@ -81,6 +91,10 @@ ui <- fluidPage(
 server <- function(input, output) {
 
   options(shiny.maxRequestSize=100*1024^2)
+
+
+
+
   # step1 gene data output
   upload_file_gene_reac<-reactive({
     if(is.null(input$upload_file_gene)) {return()}
