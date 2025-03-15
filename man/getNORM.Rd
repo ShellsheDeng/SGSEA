@@ -4,14 +4,18 @@
 \alias{getNorm}
 \title{Normalized the raw counts data}
 \usage{
-getNorm(countsData)
+getNorm(countsData, plot = FALSE)
 }
 \arguments{
-\item{countsData}{A data frame contains all numeric counts. Rows must be the sample IDs. Columns must be the unique gene symbols. See KIRC data included in this package as the input example format.}
+\item{countsData}{A data frame contains all numeric counts.
+Rows must be the sample IDs. Columns must be the unique gene symbols.
+See the included 'KIRC' dataset for an example.}
 }
 \value{
-Return a data frame with normalized counts.
+a data frame with normalized counts.
 }
 \description{
-This function uses mean-variance method to get a normalized count data. It's using the voom function from limma package. Data should be filtered before entering this step.
+This function uses mean-variance method to get a normalized count data.
+using the voom function from limma package. Data should be filtered
+before entering this step.
 }

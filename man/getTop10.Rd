@@ -7,17 +7,20 @@
 getTop10(sgsea.result, pathways, stats, plotParam)
 }
 \arguments{
-\item{sgsea.result}{A data frame (e.g. an object from getSGSEA results).}
+\item{sgsea.result}{A data frame containing SGSEA results (e.g., the output from \code{getSGSEA}).}
 
-\item{pathways}{A list of pathways annotation (e.g. the result object from getReactome function).}
+\item{pathways}{A named list of pathway annotations (e.g., the output from \code{getReactome}).}
 
-\item{stats}{A named list of statistics (e.g. the result object from getLFC or getLHR) with corresponding unique gene symbols. The list should not contain any NA's.}
+\item{stats}{A named list of statistics (e.g., the output from \code{getLFC} or \code{getLHR}), where names correspond to unique gene symbols.
+The list should not contain any \code{NA} values.}
 
-\item{plotParam}{The parameter to adjust the displayed values. If close to 0, will get a flatten plot. The Default is 1.}
+\item{plotParam}{A numeric value to adjust the displayed enrichment scores. Lower values (close to 0) produce a flatter plot. Default is 1.}
 }
 \value{
-A data frame of the top 10 significant pathways with positive NES as well as the top 10 significant pathways with negative NES in a ggplot object embedded with the enrichment barcode plots.
+A ggplot object displaying the top 10 enriched pathways with positive NES and the top 10 enriched pathways with negative NES,
+embedded with enrichment barcode plots.
 }
 \description{
-Generate a table of the top 10 significant pathways with positive NES as well as the top 10 significant pathways with negative NES
+This function identifies the top 10 enriched pathways with positive normalized enrichment scores (NES)
+and the top 10 pathways with negative NES, embedding them into a ggplot object with enrichment barcode plots.
 }
