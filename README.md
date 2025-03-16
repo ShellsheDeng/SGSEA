@@ -9,8 +9,9 @@ The **SGSEA** R package provides **nine functions** for conducting **Survival-ba
 - `getGO()`: Retrieves Gene Ontology (GO) terms.
 - `getSGSEA()`: Runs SGSEA analysis.
 - `getEnrichPlot()`: Generates an enrichment plot for a specific pathway.
-- `getTOP10()`: Identifies the top 10 enriched and bottom 10 pathways.
+- `getTop10()`: Identifies the top 10 enriched and bottom 10 pathways.
 - `downloadExampleData()`: Provides example datasets for testing.
+- `exportRankedGenes()`: Export Ranked Genes with Cox Hazard Ratios.
 
 ## **Example Dataset**
 The package includes **one example dataset, "KIRC"**, which helps users understand the required input format.
@@ -20,7 +21,6 @@ Users can run the **SGSEA Shiny app** for an **interactive analysis experience**
 ```r
 SGSEA::runExample()
 ```
-
 
 # Download and Open Example Script
 

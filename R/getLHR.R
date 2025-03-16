@@ -10,19 +10,21 @@
 
 getLHR <- function (normalizedData, survTime, survStatus) {
   if(!(is.data.frame(normalizedData))) {
-    stop('must be a data frame')
+    stop('normalizedData must be a data frame')
   }
 
   if(nrow(normalizedData) != length(survTime)) {
     stop('In count data, rows must be the sample IDs and columns must be the gene symbols')
   }
 
+
   lhr<-c()
+  names(lhr)<- colnames(normalizedData)
   for (i in 1:length(normalizedData)){
     m <- survival::coxph(Surv(survTime, survStatus) ~ normalizedData[,i] )
     mout<- summary(m)
     lhr[i]=mout$coefficients[1]
   }
-    names(lhr)<- colnames(normalizedData)
+
     return(lhr)
 }
