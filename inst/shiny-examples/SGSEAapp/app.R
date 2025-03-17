@@ -178,7 +178,7 @@ server <- function(input, output) {
     if(is.null(input$upload_file_surv)) {return()}
     else{
       if(sum(sapply(upload_file_surv_reac(), is.numeric)) != ncol(upload_file_surv_reac())-1){
-        validate("The 1st column must be ID and other columns must be numeric
+        validate("The 1st column must be 'ID' and other columns must be numeric
        with gene symbols as their column names")}
       else{DT::datatable(upload_file_surv_reac(),
                          options = list(lengthMenu = c(5, 30), pageLength = 8))}

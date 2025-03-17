@@ -1,30 +1,100 @@
-#' Generate a named numeric vector of the log hazard ratios from Cox Proportional Hazards Model
-#' @description Return a numeric vector of log hazard ratios with corresponding gene symbols as their names. This function uses the coxph function from survival package. Data should be filtered and normalized before entering this step.
-#' @param normalizedData A data frame contains the normalized counts. Rows must be the sample IDs. Columns must be the unique gene symbols. See KIRC data included in this package as the input example format.
-#' @param survTime A numeric vector of patient's survival times. User should be aware of matching the gene symbols from the normalized count data with each individual's survival times.
-#' @param survStatus A numeric vector of patient's survival status. Normally 0=alive, 1=dead. Or 1=alive, 2=death. If omitted, all subjects are assumed to have an event. User should be aware of matching the gene symbols from the normalized count data with each individual's survival status.
+#' Generate log hazard ratios from a Cox Proportional Hazards Model with optional covariates
+
+#' @description Computes log hazard ratios (LHR) for each gene in the dataset by fitting separate Cox proportional hazards models.
+#' Users can optionally include additional covariates (e.g., age, gender) in the models.
+#' Data should be filtered and normalized before using this function.
+#' Users should be aware that including additional covariates in the model may introduce dependencies
+#' across models, and violations of the proportional hazards assumption could bias LHR rankings.
+#'
+#' @param normalizedData A data frame containing **normalized gene expression counts**.
+#' Rows represent samples, and columns represent **genes (features)**.
+#' @param survTime A numeric vector of patient survival times, **matching the rows in `normalizedData`**.
+#' @param survStatus A numeric vector of patient survival status (e.g., 0 = alive, 1 = dead).
+#' @param covariates An **optional** data frame of additional covariates (e.g., age, gender, treatment group).
+#' Each row must match a sample in `normalizedData`, and each column represents a covariate.
 #' @import survival
-#' @return A named list of the log hazard ratios with their corresponding gene symbols.
+#' @return A **named numeric vector** of log hazard ratios (LHRs), where names are gene symbols.
+#' Each LHR represents the effect size of a gene on survival, estimated from its own Cox model.
 #' @export
 
+#' @note
+#' **Warning:** If additional covariates are provided, they may introduce dependencies across models.
+#' This could lead to potential biases in gene ranking, especially if the proportional hazards assumption is violated.
 
-getLHR <- function (normalizedData, survTime, survStatus) {
+
+
+getLHR <- function (normalizedData, survTime, survStatus, covariates = NULL) {
+  # Input validation
   if(!(is.data.frame(normalizedData))) {
-    stop('normalizedData must be a data frame')
+    stop('Error: normalizedData must be a data frame')
   }
 
   if(nrow(normalizedData) != length(survTime)) {
-    stop('In count data, rows must be the sample IDs and columns must be the gene symbols')
+    stop("Error: Mismatch in dimensions.  Ensure survival vectors match the rows of 'normalizedData'.")
+  }
+
+  if (!is.null(covariates)) {
+    if (!is.data.frame(covariates) || nrow(covariates) != nrow(normalizedData)) {
+      stop("Error: 'covariates' must be a data frame with the same number of rows as 'normalizedData'.")
+    }
   }
 
 
-  lhr<-c()
-  names(lhr)<- colnames(normalizedData)
-  for (i in 1:length(normalizedData)){
-    m <- survival::coxph(Surv(survTime, survStatus) ~ normalizedData[,i] )
-    mout<- summary(m)
-    lhr[i]=mout$coefficients[1]
+  # Ensure LHR vector is initialized correctly
+  lhr <- rep(NA, ncol(normalizedData))  # Initialize with NA values
+
+  # Assign gene names to LHR vector
+  names(lhr) <- colnames(normalizedData)
+
+
+  #for (i in 1:length(normalizedData)){
+  #  m <- survival::coxph(Surv(survTime, survStatus) ~ normalizedData[,i] )
+  #  mout<- summary(m)
+  #  lhr[i]=mout$coefficients[1]
+  #}
+
+  # Iterate through each gene
+  for (i in seq_along(colnames(normalizedData))) {
+
+    # Construct the formula dynamically
+    formula_str <- paste("Surv(survTime, survStatus) ~ GeneExpression")
+
+    if (!is.null(covariates)) {
+      covariate_names <- colnames(covariates)
+      formula_str <- paste(formula_str, paste(covariate_names, collapse = " + "))
+    }
+
+    formula_obj <- as.formula(formula_str)
+
+    # Ensure correct data structure
+    data_model <- if (is.null(covariates)) {
+      data.frame(GeneExpression = normalizedData[, i], survTime, survStatus)
+    } else {
+      data.frame(GeneExpression = normalizedData[, i], covariates, survTime, survStatus)
+    }
+
+    # Fit Cox model safely with tryCatch
+    model <- tryCatch(
+      {
+        survival::coxph(formula_obj, data = data_model)
+      },
+      error = function(e) NULL  # Return NULL on failure instead of NA
+    )
+
+    # Extract log hazard ratio (LHR) if model is successful
+    if (!is.null(model) && inherits(model, "coxph")) {
+      summary_model <- summary(model)
+      lhr[i] <- summary_model$coefficients[1, 1]  # Extract LHR
+    }
   }
 
-    return(lhr)
+  # Conditional warning: Only display if covariates are provided
+  if (!is.null(covariates)) {
+    warning(
+      "Including covariates may introduce dependencies across models. If covariates violate the proportional hazards assumption,
+      ,they may systematically bias LHR values and gene rankings. "
+    )
+  }
+
+  return(lhr)
 }
