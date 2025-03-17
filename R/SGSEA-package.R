@@ -11,7 +11,7 @@
 #' - `getGO()`: Retrieves Gene Ontology (GO) terms.
 #' - `getSGSEA()`: Runs the SGSEA analysis.
 #' - `getEnrichPlot()`: Generates an enrichment plot for a pathway.
-#' - `getTOP10()`: Identifies the top 10 enriched and bottom 10 pathways.
+#' - `getTop10()`: Identifies the top 10 enriched and bottom 10 pathways.
 #' - `downloadExampleData()`: Downloads an example dataset.
 #'
 #' @section Example Script:
@@ -23,7 +23,9 @@
 #' }
 #'
 #' @name SGSEA
-#' @keywords package
+#' @docType package
+#' @exportPattern "^[[:alpha:]]+"
+
 NULL
 
 ## Keep Existing Metadata
