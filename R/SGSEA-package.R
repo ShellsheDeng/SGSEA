@@ -5,7 +5,7 @@
 #'
 #' @section Main Functions:
 #' - `getNorm()`: Normalizes input gene expression data.
-#' - `getLHR()`: Computes log hazard ratio (LHR).
+#' - `getLHR()`: Computes log hazard ratio (LHR) with optional covariates.
 #' - `getLFC()`: Computes log fold change (LFC).
 #' - `getReactome()`: Retrieves Reactome pathways.
 #' - `getGO()`: Retrieves Gene Ontology (GO) terms.
