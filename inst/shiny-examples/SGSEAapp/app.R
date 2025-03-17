@@ -78,11 +78,8 @@ ui <- fluidPage(
       # Help & Support Section
       h5("Need Help?"),
       helpText("For technical issues or inquiries, please contact:"),
-      tags$a("shellshe_deng@hotmail.com", href="mailto:shellshe_deng@hotmail.com"),
+      tags$a("shellshe_deng@hotmail.com", href="mailto:shellshe_deng@hotmail.com")
 
-      h4("License"),
-      helpText("This software is released under the GPLv3 license."),
-      tags$a("View License", href="LICENSE", target="_blank")
 
     ),
 
@@ -101,8 +98,11 @@ ui <- fluidPage(
 
   )
   )
-  )
+  ),
 
+  h4("License"),
+  helpText("This software is released under the GPLv3 license."),
+  tags$a("View License", href="LICENSE.md", target="_blank")
 
 
 )
