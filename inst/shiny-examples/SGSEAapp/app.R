@@ -72,7 +72,18 @@ ui <- fluidPage(
       # Action button to start analysis
       waiter::use_waiter(),
       actionButton(inputId = "gobutton",label="Go!"),
-      h5("View results in 'SGSEA Results' (top right panel).")
+      h5("View results in 'SGSEA Results' (top right panel)."),
+
+
+      # Help & Support Section
+      h5("Need Help?"),
+      helpText("For technical issues or inquiries, please contact:"),
+      tags$a("shellshe_deng@hotmail.com", href="mailto:shellshe_deng@hotmail.com"),
+
+      h4("License"),
+      helpText("This software is released under the GPLv3 license."),
+      tags$a("View License", href="LICENSE", target="_blank")
+
     ),
 
 
@@ -91,6 +102,9 @@ ui <- fluidPage(
   )
   )
   )
+
+
+
 )
 
 

@@ -36,3 +36,13 @@ install.packages("BiocManager")
 install.packages("devtools")
 devtools::install_github("ShellsheDeng/SGSEA")
 ```
+
+
+## License
+
+SGSEA is released under the **GNU General Public License v3 (GPLv3)**.  
+- The **SGSEA R package** is licensed under GPLv3.  
+- The **Shiny App** and all generated results fall under the same GPLv3 license.  
+
+For more details, visit: [GNU GPLv3 License](https://www.gnu.org/licenses/gpl-3.0.html)
+
