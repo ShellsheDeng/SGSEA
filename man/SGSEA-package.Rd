@@ -2,10 +2,11 @@
 % Please edit documentation in R/SGSEA-package.R
 \docType{package}
 \name{SGSEA-package}
+\alias{SGSEA}
 \alias{SGSEA-package}
 \title{SGSEA: Survival-based Gene Set Enrichment Analysis}
 \description{
-Perform a Survival-based Gene Set Enrichment Analysis (SGSEA) and the typical case vs. control (or normal vs. tumor) GSEA by using functions from the survival and fgsea package. The gene annotation database included in this package is the Reactome database. The package also provides a mean-variance model based normalization method for raw count data which is from the limma package. The log fold change calculation function using functions from the DESeq2 package, so the user does not need to normaliza the raw count data when conducting the typical GSEA method. The package also includes a data set named KIRC which gives an example of what an appropriate input data format should be. This data is a subset of Kidney Renal Clear Cell Carcinoma mRNA seq data (originally 520 patients with 20502 genes, version 2016_01_28) from the Broad institute The Cancer Genome Atlas (TCGA) Genome Data Analysis Center (GDAC) Firehose website (http://gdac.broadinstitute.org). User can use 'SGSEA::runExample()' to launch a corresponding SGSEA Shiny app.
+Perform a Survival-based Gene Set Enrichment Analysis (SGSEA) and the typical case vs. control (or normal vs. tumor) GSEA using functions from the survival and fgsea packages. The gene annotation database included in this package is the Reactome database. The package also provides a mean-variance model based normalization method for raw count data, implemented using the limma package. The log fold change calculation function utilizes functions from the DESeq2 package, eliminating the need to normalize raw count data separately for the typical GSEA method. The package also includes a dataset named "KIRC" to serve as an example of the appropriate input data format. This dataset is a subset of Kidney Renal Clear Cell Carcinoma (KIRC) mRNA-seq data (originally 520 patients with 20,502 genes, version 2016_01_28) from the Broad Institute The Cancer Genome Atlas (TCGA) Genome Data Analysis Center (GDAC) Firehose website (http://gdac.broadinstitute.org). Users can run 'SGSEA::runExample()' to launch a corresponding SGSEA Shiny app.
 }
 \author{
 \strong{Maintainer}: Xiaoxu Deng \email{xdeng3@kumc.edu}

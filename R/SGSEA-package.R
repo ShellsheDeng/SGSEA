@@ -22,9 +22,9 @@
 #' file.edit("SGSEA_example_script.R")
 #' }
 #'
+#' @keywords package
 #' @name SGSEA
-#' @docType package
-#' @exportPattern "^[[:alpha:]]+"
+#' @noRd
 
 NULL
 
