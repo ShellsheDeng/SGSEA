@@ -25,10 +25,4 @@ Each LHR represents the effect size of a gene on survival, estimated from its ow
 Computes log hazard ratios (LHR) for each gene in the dataset by fitting separate Cox proportional hazards models.
 Users can optionally include additional covariates (e.g., age, gender) in the models.
 Data should be filtered and normalized before using this function.
-Users should be aware that including additional covariates in the model may introduce dependencies
-across models, and violations of the proportional hazards assumption could bias LHR rankings.
-}
-\note{
-\strong{Warning:} If additional covariates are provided, they may introduce dependencies across models.
-This could lead to potential biases in gene ranking, especially if the proportional hazards assumption is violated.
 }

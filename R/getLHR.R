@@ -3,9 +3,7 @@
 #' @description Computes log hazard ratios (LHR) for each gene in the dataset by fitting separate Cox proportional hazards models.
 #' Users can optionally include additional covariates (e.g., age, gender) in the models.
 #' Data should be filtered and normalized before using this function.
-#' Users should be aware that including additional covariates in the model may introduce dependencies
-#' across models, and violations of the proportional hazards assumption could bias LHR rankings.
-#'
+
 #' @param normalizedData A data frame containing **normalized gene expression counts**.
 #' Rows represent samples, and columns represent **genes (features)**.
 #' @param survTime A numeric vector of patient survival times, **matching the rows in `normalizedData`**.
@@ -17,9 +15,6 @@
 #' Each LHR represents the effect size of a gene on survival, estimated from its own Cox model.
 #' @export
 
-#' @note
-#' **Warning:** If additional covariates are provided, they may introduce dependencies across models.
-#' This could lead to potential biases in gene ranking, especially if the proportional hazards assumption is violated.
 
 
 
@@ -88,13 +83,7 @@ getLHR <- function (normalizedData, survTime, survStatus, covariates = NULL) {
     }
   }
 
-  # Conditional warning: Only display if covariates are provided
-  if (!is.null(covariates)) {
-    warning(
-      "Including covariates may introduce dependencies across models. If covariates violate the proportional hazards assumption,
-      ,they may systematically bias LHR values and gene rankings. "
-    )
-  }
+
 
   return(lhr)
 }
