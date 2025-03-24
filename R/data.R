@@ -1,21 +1,20 @@
-#' Kidney Renal clear cell carcinoma(KIRC)
+#' Example KIRC (Kidney Renal clear cell carcinoma) dataset
 #'
-#' An example of the data structure, which is a subset of Kidney Renal Clear Cell Carcinoma mRNA seq data (version 2016_01_28) from Broad Institute The Cancer Genome Atlas (TCGA) Genome Data Analysis Center (GDAC) Firehose website (http://gdac.broadinstitute.org).
+#' A curated subset of Kidney Renal Clear Cell Carcinoma (KIRC) mRNA-seq data (version 2016_01_28) from the TCGA GDAC Firehose portal.
+#' This dataset is used to demonstrate the SGSEA workflow.
 #'
-#' @format A data frame with 50 observations and 10 variables:
+#' @format A data frame with 50 patients (rows) and 623 variables (columns):
 #' \describe{
-#'   \item{ID}{patient's ID}
-#'   \item{survtime}{patient's survival time in days}
-#'   \item{status}{1 for alive, 2 for dead}
-#'   \item{A1BG}{gene symbol}
-#'   \item{A1CF}{gene symbol}
-#'   \item{A2BP1}{gene symbol}
-#'   \item{A2LD1}{gene symbol}
-#'   \item{A2ML1}{gene symbol}
-#'   \item{A2M}{gene symbol}
-#'   \item{A4GALT}{gene symbol}
+#'   \item{ID}{Patient identifier}
+#'   \item{survtime}{Survival time in days}
+#'   \item{status}{Survival status (1 = alive, 2 = dead)}
+#'   \item{A1BG, A1CF, ..., A4GALT}{Gene expression values for selected genes}
 #' }
+
+
+
 #' @source <https://gdac.broadinstitute.org/#>
 #' @examples
 #' data(KIRC)  # lazy loading.
+#' head(KIRC)
 "KIRC"
