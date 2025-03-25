@@ -1,4 +1,4 @@
-# SGSEA Example Script
+# =========SGSEA Example Script============#
 # This script demonstrates the step-by-step workflow of SGSEA analysis.
 
 # Load SGSEA package
@@ -38,18 +38,16 @@ lhr_results <- getLHR(normalizedData = normalized_gene_expr,
                       survTime = survTime,
                       survStatus = survStatus)
 
-# Option for getting the log fold change from the Differential expression analysis
-# lfc_results < getLFC(countData, cancer, normal, 70)
 
 # Step 5: Retrieve Pathways
 # Option 1: Get Reactome Pathways (for general pathway analysis)
-pathways <- getReactome(species = "human")
+rpathways <- getReactome(species = "human")
 
 # Option 2: Get GO Terms (for Gene Ontology analysis)
-# pathways <- getGO(species = "human")
+# gopathways <- getGO(species = "human")
 
 # Step 6: Run SGSEA Analysis
-sgsea_results <- getSGSEA(pathways = pathways,
+sgsea_results <- getSGSEA(pathways = rpathways,
                           stats = lhr_results,
                           minGenes = 5,
                           maxGenes = 500)
@@ -57,17 +55,43 @@ sgsea_results <- getSGSEA(pathways = pathways,
 # Step 7: Generate an Enrichment Plot for a Specific Pathway
 # Selecting the first pathway from the SGSEA results table
 # or typing the name directly: "Homo sapiens: Cell Cycle, Mitotic"
-selected_pathway <- sgsea_results$pathway[1]
+selected_pathway <- sgsea_results$rpathway[1]
 
 # Calling getEnrichPlot() with the correct argument structure
-getEnrichPlot(pathways = pathways,
+getEnrichPlot(pathways = rpathways,
               pathwayName = selected_pathway,
               stats = lhr_results)
 
 # Step 8: Get the Top 20 Enriched Pathways (10 top and 10 bottom)
-top_pathways <- getTop10(sgsea_results, pathways, lhr_results, plotParam = 0.15)
+top_pathways <- getTop10(sgsea_results, rpathways, lhr_results, plotParam = 0.15)
 
 # Save Results to CSV
 write.csv(sgsea_results, "SGSEA_Results.csv", row.names = FALSE)
-message("SGSEA results saved to SGSEA_Results.csv")
 
+
+# ===========  GSEA Example Script=============#
+# Step 1 : load the data
+data("KIRC_DEA", package = "SGSEA")
+head(KIRC_DEA)
+
+# Step 2: compute log fold change
+lfc_results <-getLFC(KIRC_DEA,cancer,normal,70,70)
+
+# Step 3:  Retrieve Pathways
+# Option 1: Get Reactome Pathways (for general pathway analysis)
+rpathways <- getReactome(species = "human")
+
+# Option 2: Get GO Terms (for Gene Ontology analysis)
+# gopathways <- getGO(species = "human")
+
+# Step 4: Run GSEA Analysis
+dea_results <- getSGSEA(pathways = rpathways,
+                     stats = lfc_results,
+                     minGenes = 5,
+                     maxGenes = 500)
+
+# Step 5: Get the Top 20 Enriched Pathways (10 top and 10 bottom)
+getTop10(dea_results, rpathways,lfc_results, 0.15)
+
+# Step 6: Generate an Enrichment Plot for a Specific Pathway
+getEnrichPlot(rpathways,"Homo sapiens: Cell Cycle, Mitotic",lfc_results)

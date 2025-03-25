@@ -11,6 +11,8 @@
 #' @param covariates An **optional** data frame of additional covariates (e.g., age, gender, treatment group).
 #' Each row must match a sample in `normalizedData`, and each column represents a covariate.
 #' @import survival
+#' @importFrom stats as.formula
+
 #' @return A **named numeric vector** of log hazard ratios (LHRs), where names are gene symbols.
 #' Each LHR represents the effect size of a gene on survival, estimated from its own Cox model.
 #' @export

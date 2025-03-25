@@ -4,6 +4,8 @@
 \alias{downloadExampleData}
 \title{Download Example Data for SGSEA}
 \arguments{
+\item{dataset}{A string specifying which dataset to download: "KIRC" or "KIRC_DEA" (default: "KIRC").}
+
 \item{file_name}{A string specifying the file name to save the example dataset as (default: "KIRC_example.csv").}
 
 \item{path}{A string specifying the directory where the file should be saved (default: current working directory).}
@@ -12,11 +14,14 @@
 A message indicating where the file was saved.
 }
 \description{
-This function allows users to download the example dataset ("KIRC")
-provided with the SGSEA package. The dataset demonstrates the expected input format.
+This function allows users to download the example datasets ("KIRC" or "KIRC_DEA")
+provided with the SGSEA package. These datasets demonstrate the expected input formats
+for SGSEA analyses.
 }
 \examples{
 \dontrun{
-  SGSEA::downloadExampleData()
+  SGSEA::downloadExampleData()                     # Downloads KIRC
+  SGSEA::downloadExampleData("KIRC_DEA")           # Downloads KIRC_DEA
+  SGSEA::downloadExampleData("KIRC_DEA", "DEA.csv")
 }
 }

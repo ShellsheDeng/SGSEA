@@ -14,7 +14,7 @@ The **SGSEA** R package provides **nine functions** for conducting **Survival-ba
 - `exportRankedGenes()`: Export Ranked Genes with Cox Hazard Ratios.
 
 ## **Example Dataset**
-The package includes **one example dataset, "KIRC"**, which helps users understand the required input format.
+The package includes **two example dataset, "KIRC" and "KIRC_DEA"**, which helps users understand the required input format. The first one for conducting SGSEA and the second one for conducting regular GSEA.
 
 ## **Shiny App**
 Users can run the **SGSEA Shiny app** for an **interactive analysis experience** before diving into detailed function documentation:
