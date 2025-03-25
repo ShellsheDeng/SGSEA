@@ -1,6 +1,6 @@
 Package: SGSEA
 Title: Survival-based Gene Set Enrichment Analysis
-Version: 1.1
+Version: 2.0
 Authors@R: c(person("Xiaoxu", "Deng", email="xdeng3@kumc.edu", role = c("aut", "cre")), person("Jeffrey", "Thompson", email="jthompson21@kumc.edu", role="aut"))
 Description: Perform a Survival-based Gene Set Enrichment Analysis (SGSEA) and the typical case vs. control 
     (or normal vs. tumor) GSEA using functions from the survival and fgsea packages. The gene annotation 
