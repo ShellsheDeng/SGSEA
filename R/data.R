@@ -18,3 +18,23 @@
 #' data(KIRC)  # lazy loading.
 #' head(KIRC)
 "KIRC"
+
+
+
+
+#' KIRC_DEA: Curated Dataset for Differential Expression Analysis
+#'
+#' A subset of the Kidney Renal Clear Cell Carcinoma (KIRC) mRNA-seq data from TCGA, curated for differential expression analysis.
+#' This dataset contains 140 samples (70 tumor and 70 normal) with raw gene expression counts and corresponding TCGA sample IDs.
+#' Tumor samples have IDs containing "01A", while normal samples contain "11A".
+#' Gene symbols start from the very first column and each row corresponds to a TCGA sample. Sample IDs are stored as row names.
+#'
+#' @format A data frame with 140 rows (samples) and 620 gene symbols as columns. The row names are TCGA sample IDs.
+#' \describe{
+#'   \item{A1BG, A1CF, ..., A4GALT}{Gene expression values for selected genes}
+#' }
+#' @source \url{https://gdac.broadinstitute.org/}
+#' @examples
+#' data(KIRC_DEA)
+#' head(KIRC_DEA)
+"KIRC_DEA"

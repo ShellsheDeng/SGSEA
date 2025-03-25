@@ -1,39 +1,55 @@
-#' Generate a named numeric vector of the log fold changes from the negative binomial generalized linear model
-#' @description Return a numeric vector of the log fold changes with corresponding gene symbols as their names. This function uses functions from the DESeq2 package, so it takes care of the normalization procedure within the model. Users don't need to use getNorm function before this step, but still need to filter the low expressed genes.
-#' @param countData A data frame contains the raw counts. Rows must be the sample IDs and samples coming from the same experimental group should layout together (e.g. first 10 rows are label 1 and next 10 rows are label 2). Columns must be the unique gene symbols. See KIRC data included in this package as the input example format.
-#' @param label1 A group label for the samples (e.g. cancer).
-#' @param label2 A group label for the samples (e.g. normal).
-#' @param label1_numRep Number of replications for label 1 group (e.g. first 10 rows are from label 1, then input 10).
-#' @param label2_numRep Number of replications for label 2 group (e.g. next 20 rows are from label 2, then input 20).
+#' Compute Log Fold Change (LFC) using DESeq2 for Case-Control Expression Data
+#' @description This function performs differential expression analysis using a negative binomial GLM implemented in the DESeq2 package.
+#' It returns a named numeric vector of log2 fold changes (LFC) for each gene. Data should be raw counts, already filtered for low expression.
+#'
+#' @param countData A data frame of raw gene expression counts.
+#' Rows must be sample IDs and columns must be gene symbols.
+#' Data should be filtered and normalized before using this function.
+
+#' @param label1 Character label for the first condition (e.g., "cancer").
+#' @param label2 Character label for the second condition (e.g., "normal").
+#' @param label1_numRep Number of samples in the `label1` group.
+#' @param label2_numRep Number of samples in the `label2` group.
+#'
+#' @return A named numeric vector of log2 fold changes, where names are gene symbols.
 #' @import DESeq2
-#' @import stats
-#' @return A named list of the log fold changes with their corresponding gene symbols.
+#' @importFrom stats na.omit
 #' @export
 #'
+#' @examples
+#' data(KIRC_DEA)
+#' countData <- KIRC_DEA[, -1]
+#' lfc <- getLFC(countData, label1 = "cancer", label2 = "normal", label1_numRep = 70, label2_numRep = 70)
+
+
 
 getLFC <- function(countData,label1,label2,label1_numRep,label2_numRep){
 
   if(!(is.data.frame(countData))) {
-    stop('must be a data frame')
+    stop('countData must be a data frame')
   }
 
+
   if(nrow(countData) != (label1_numRep + label2_numRep) ) {
-    stop('rows must be the sample IDs and columns must be the gene symbols')
+    stop('Row count must equal label1_numRep + label2_numRep.')
   }
+
 
   countData = as.data.frame(t(countData))
   condition <- as.factor(c(rep("label1",label1_numRep),rep("label2",label2_numRep)))
   coldata<- data.frame(row.names = colnames(countData),condition)
+
   dds<-DESeq2::DESeqDataSetFromMatrix(countData = round(countData),
                               colData = coldata,
                               design= ~ condition)
+
   dds<- DESeq2::DESeq(dds)
   dds.res<-DESeq2::results(dds,contrast = c("condition","label1","label2"))
-  dds.res<-as.data.frame(dds.res)
-  dds.res<-stats::na.omit(dds.res)
+  dds.res<-stats::na.omit(as.data.frame(dds.res))
+
   lfc <- dds.res$log2FoldChange
   names(lfc)<-rownames(dds.res)
-  lfc<-na.omit(lfc)
+
   return(lfc)
 
 
