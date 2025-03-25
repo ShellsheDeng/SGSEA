@@ -7,7 +7,7 @@
 \format{
 A data frame with 140 rows (samples) and 620 gene symbols as columns. The row names are TCGA sample IDs.
 \describe{
-\item{A1BG, A1CF, ..., A4GALT}{Gene expression values for selected genes}
+\item{Gene expression columns}{Columns represent expression values for genes (e.g., AAAS, ABCD3, ABL1, etc.)}
 }
 }
 \source{

@@ -10,7 +10,7 @@ A data frame with 50 patients (rows) and 623 variables (columns):
 \item{ID}{Patient identifier}
 \item{survtime}{Survival time in days}
 \item{status}{Survival status (1 = alive, 2 = dead)}
-\item{A1BG, A1CF, ..., A4GALT}{Gene expression values for selected genes}
+\item{Gene expression columns}{The remaining ~620 columns contain expression values for selected genes (e.g., A1BG, A1CF, A4GALT, etc.)}
 }
 }
 \source{

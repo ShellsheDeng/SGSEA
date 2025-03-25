@@ -8,8 +8,8 @@
 #'   \item{ID}{Patient identifier}
 #'   \item{survtime}{Survival time in days}
 #'   \item{status}{Survival status (1 = alive, 2 = dead)}
-#'   \item{A1BG, A1CF, ..., A4GALT}{Gene expression values for selected genes}
-#' }
+#'   \item{Gene expression columns}{The remaining ~620 columns contain expression values for selected genes (e.g., A1BG, A1CF, A4GALT, etc.)}
+#'}
 
 
 
@@ -31,7 +31,7 @@
 #'
 #' @format A data frame with 140 rows (samples) and 620 gene symbols as columns. The row names are TCGA sample IDs.
 #' \describe{
-#'   \item{A1BG, A1CF, ..., A4GALT}{Gene expression values for selected genes}
+#'  \item{Gene expression columns}{Columns represent expression values for genes (e.g., AAAS, ABCD3, ABL1, etc.)}
 #' }
 #' @source \url{https://gdac.broadinstitute.org/}
 #' @examples
