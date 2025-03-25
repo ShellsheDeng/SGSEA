@@ -2,24 +2,32 @@
 % Please edit documentation in R/getLFC.R
 \name{getLFC}
 \alias{getLFC}
-\title{Generate a named numeric vector of the log fold changes from the negative binomial generalized linear model}
+\title{Compute Log Fold Change (LFC) using DESeq2 for Case-Control Expression Data}
 \usage{
 getLFC(countData, label1, label2, label1_numRep, label2_numRep)
 }
 \arguments{
-\item{countData}{A data frame contains the raw counts. Rows must be the sample IDs and samples coming from the same experimental group should layout together (e.g. first 10 rows are label 1 and next 10 rows are label 2). Columns must be the unique gene symbols. See KIRC data included in this package as the input example format.}
+\item{countData}{A data frame of raw gene expression counts.
+Rows must be sample IDs and columns must be gene symbols.
+Data should be filtered and normalized before using this function.}
 
-\item{label1}{A group label for the samples (e.g. cancer).}
+\item{label1}{Character label for the first condition (e.g., "cancer").}
 
-\item{label2}{A group label for the samples (e.g. normal).}
+\item{label2}{Character label for the second condition (e.g., "normal").}
 
-\item{label1_numRep}{Number of replications for label 1 group (e.g. first 10 rows are from label 1, then input 10).}
+\item{label1_numRep}{Number of samples in the \code{label1} group.}
 
-\item{label2_numRep}{Number of replications for label 2 group (e.g. next 20 rows are from label 2, then input 20).}
+\item{label2_numRep}{Number of samples in the \code{label2} group.}
 }
 \value{
-A named list of the log fold changes with their corresponding gene symbols.
+A named numeric vector of log2 fold changes, where names are gene symbols.
 }
 \description{
-Return a numeric vector of the log fold changes with corresponding gene symbols as their names. This function uses functions from the DESeq2 package, so it takes care of the normalization procedure within the model. Users don't need to use getNorm function before this step, but still need to filter the low expressed genes.
+This function performs differential expression analysis using a negative binomial GLM implemented in the DESeq2 package.
+It returns a named numeric vector of log2 fold changes (LFC) for each gene. Data should be raw counts, already filtered for low expression.
+}
+\examples{
+data(KIRC_DEA)
+countData <- KIRC_DEA[, -1]
+lfc <- getLFC(countData, label1 = "cancer", label2 = "normal", label1_numRep = 70, label2_numRep = 70)
 }
