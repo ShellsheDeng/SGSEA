@@ -13,6 +13,8 @@
 #' - `getEnrichPlot()`: Generates an enrichment plot for a pathway.
 #' - `getTop10()`: Identifies the top 10 enriched and bottom 10 pathways.
 #' - `downloadExampleData()`: Downloads an example dataset.
+#' - `exportRankedGenes()`: Export Ranked Genes with Cox Hazard Ratios to a CSV file
+#' - `runExample()`: Launch to a corresponding SGSEA Shiny app
 #'
 #' @section Example Script:
 #' To download and open the example script, run:

@@ -1,6 +1,6 @@
 # **Survival-based Gene Set Enrichment Analysis (SGSEA)**
 
-The **SGSEA** R package provides **nine functions** for conducting **Survival-based Gene Set Enrichment Analysis (SGSEA)** and **standard case vs. control GSEA**:
+The **SGSEA** R package provides **11 functions** for conducting **Survival-based Gene Set Enrichment Analysis (SGSEA)** and **standard case vs. control GSEA**:
 
 - `getNorm()`: Normalizes input gene expression data.
 - `getLHR()`: Computes log hazard ratios (LHR).
@@ -12,6 +12,7 @@ The **SGSEA** R package provides **nine functions** for conducting **Survival-ba
 - `getTop10()`: Identifies the top 10 enriched and bottom 10 pathways.
 - `downloadExampleData()`: Provides example datasets for testing.
 - `exportRankedGenes()`: Export Ranked Genes with Cox Hazard Ratios.
+- `runExample()`: Launch to a corresponding SGSEA Shiny app
 
 ## **Example Dataset**
 The package includes **two example dataset, "KIRC" and "KIRC_DEA"**, which helps users understand the required input format. The first one for conducting SGSEA and the second one for conducting regular GSEA.
@@ -30,11 +31,10 @@ file.copy(script_path, "SGSEA_example_script.R")
 file.edit("SGSEA_example_script.R")  # Open it in RStudio
 ```
 
-# Installation, install SGSEA from GitHub: 
+# Installation, install or Update SGSEA from GitHub: 
 ```r
-install.packages("BiocManager")
-install.packages("devtools")
-devtools::install_github("ShellsheDeng/SGSEA")
+install.packages("remotes")
+remotes::install_github("ShellsheDeng/SGSEA", force = TRUE)
 ```
 
 
