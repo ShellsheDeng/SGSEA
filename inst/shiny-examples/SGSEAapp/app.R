@@ -26,7 +26,7 @@ ui <- fluidPage(
 
       # step 1 upload gene file
       fileInput(inputId = "upload_file_gene", label = h5("Step 1: Upload data containing Gene expression and survival information")),
-      helpText("The first column must be 'ID', the second 'survtime', and the third 'status'. All other columns should contain numeric gene expression values with gene symbols as column names. Click 'Gene Data' (top-right panel) to verify the upload before proceeding."),
+      helpText("The first column must be 'ID', the second 'survtime', and the third 'status'. All other columns should contain numeric gene expression values with gene symbols as column names. Click 'Input Data' (top-right panel) to verify the upload before proceeding."),
       radioButtons(inputId = "data_type_gene", label = h5("Select File Type"),
                    choices = c(".csv", ".txt", ".xlsx"), selected = ".csv"),
       helpText("The uploaded file should match the format of the KIRC dataset, including 'ID', 'survtime', 'status', and gene expression columns."),
@@ -59,7 +59,7 @@ ui <- fluidPage(
         tabPanel("Top10 Significant Pathways", plotOutput("output_sgsea_top10", width = "80%"))
       )
     )
-  )
+  ),
   h4("License"),
   helpText("This software is released under the GPLv3 license."),
   tags$a("View License", href="LICENSE.md", target="_blank")
