@@ -29,7 +29,9 @@ ui <- fluidPage(
       helpText("The first column must be 'ID', the second 'survtime', and the third 'status'. All other columns should contain numeric gene expression values with gene symbols as column names. Click 'Input Data' (top-right panel) to verify the upload before proceeding."),
       radioButtons(inputId = "data_type_gene", label = h5("Select File Type"),
                    choices = c(".csv", ".txt", ".xlsx"), selected = ".csv"),
-      helpText("The uploaded file should match the format of the KIRC dataset, including 'ID', 'survtime', 'status', and gene expression columns."),
+      helpText("The uploaded file should match the format of the KIRC dataset, including 'ID', 'survtime', 'status', and gene expression columns.
+               The status indicator, normally 0=alive, 1=dead. Other choices are TRUE/FALSE (TRUE = death) or 1/2 (2=death).
+               For interval censored data, the status indicator is 0=right censored, 1=event at time, 2=left censored, 3=interval censored."),
 
       # step 2 filtering
       radioButtons("filtering", "Step 2: Apply Filtering?", choices = c("Yes" = 1, "No" = 2)),
@@ -188,7 +190,7 @@ server <- function(input, output) {
     gene_expr <- dat[, 4:ncol(dat)]
 
     # Normalize before LHR
-    lhr <- SGSEA::getLHR(normalizedData = gene_expr, survTime = survTime, survStatus = survStatus)
+    lhr <- SGSEA::getLHR(normalizedData = gene_expr, survTime = survTime, survStatus = survStatus, covariates = NULL)
     na.omit(lhr)
   })
 
@@ -201,6 +203,7 @@ server <- function(input, output) {
     w$show(); on.exit(w$hide())
     Sys.sleep(1)
     readRDS(system.file("extdata", "spathways.rds", package = "SGSEA"))
+
   })
 
 
