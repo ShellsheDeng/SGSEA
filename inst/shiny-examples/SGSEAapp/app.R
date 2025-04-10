@@ -191,7 +191,7 @@ server <- function(input, output) {
 
     # Normalize before LHR
     lhr <- SGSEA::getLHR(normalizedData = gene_expr, survTime = survTime, survStatus = survStatus, covariates = NULL)
-    na.omit(lhr)
+    #na.omit(lhr)
   })
 
 
